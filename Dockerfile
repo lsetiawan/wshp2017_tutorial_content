@@ -14,6 +14,10 @@ RUN apt-get update && \
 
 USER $NB_USER
 
+COPY data /home/$NB_USER/data
+COPY notebooks /home/$NB_USER/notebooks
+RUN rm -rf /home/$NB_USER/work
+
 # Install Python 3 packages
 # Remove pyqt and qt pulled in for matplotlib since we're only ever going to
 # use notebook-friendly backends in these images
